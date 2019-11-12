@@ -44,7 +44,7 @@ echo "Current Folder: " && pwd
 git checkout ${BRANCH_UI}
 git pull
 npm install
-npm run build
+npm run build-admin
 cp -rf dist/ ../${DIST}/public
 echo "BUild dia-ui successfully"
 

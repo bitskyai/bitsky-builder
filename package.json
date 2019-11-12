@@ -1,0 +1,24 @@
+{
+  "name": "dia",
+  "version": "0.1.0",
+  "description": "DIA central git",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test",
+    "build-engine-ui": "./scripts/build-engine-ui.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/munew/dia.git"
+  },
+  "keywords": [
+    "automation",
+    "data crawling"
+  ],
+  "author": "munewio@gmail.com",
+  "license": "Apache License 2.0",
+  "bugs": {
+    "url": "https://github.com/munew/dia/issues"
+  },
+  "homepage": "https://github.com/munew/dia#readme"
+}

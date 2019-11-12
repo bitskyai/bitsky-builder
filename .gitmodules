@@ -1,0 +1,9 @@
+[submodule "dia-ui"]
+	path = dia-ui
+	url = https://github.com/munew/dia-ui.git
+[submodule "dia-engine"]
+	path = dia-engine
+	url = https://github.com/munew/dia-engine.git
+[submodule "dia-electron"]
+	path = dia-electron
+	url = https://github.com/munew/dia-electron.git

@@ -7,3 +7,6 @@
 [submodule "dia-electron"]
 	path = dia-electron
 	url = https://github.com/munew/dia-electron.git
+[submodule "dia-soi-boilerplate-node"]
+	path = dia-soi-boilerplate-node
+	url = https://github.com/munew/dia-soi-boilerplate-node.git

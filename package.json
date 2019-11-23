@@ -6,7 +6,7 @@
   "scripts": {
     "test": "npm run test",
     "build-engine-ui": "./scripts/build-engine-ui.sh",
-    "build-electron": "./scripts/build-electron.sh"
+    "build-electron": "cross-env BUILD_TARGET_PLATFORM=electron ./scripts/build-electron.sh"
   },
   "repository": {
     "type": "git",

@@ -9,6 +9,7 @@
 # 3. DIST: which folder to store build files. Default is `dist-engine-ui`
 # 4. NOT_START_SERVER: After build successful don't start server
 # 5. ENGINE_UI_FOLDER_NAME: folder name for `dia-engine` with `dia-ui`. Defualt is `engine-ui`
+# 6. NOT_INSTALL_NODE_MODULES: Don't install node_modules in target folder
 
 if [[ -z "${BRANCH_UI}" ]]; then
   BRANCH_UI="develop"
@@ -58,9 +59,11 @@ cp -rf dist/ ../${TARGET_PATH}/src/public/
 echo "BUild dia-ui successfully"
 
 ###########################
-echo "Install production node_modules..."
-cd ../${TARGET_PATH}
-npm install --production
+if [[ -z "${NOT_INSTALL_NODE_MODULES}" ]]; then
+  echo "Install production node_modules..."
+  cd ../${TARGET_PATH}
+  npm install --production
+fi
 
 ###########################
 # Default start server

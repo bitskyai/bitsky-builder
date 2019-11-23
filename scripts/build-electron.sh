@@ -24,6 +24,10 @@ if [[ -z "${NOT_START_SERVER}" ]]; then
   export NOT_START_SERVER=true
 fi
 
+if [[ -z "${NOT_INSTALL_NODE_MODULES}" ]]; then
+  export NOT_INSTALL_NODE_MODULES=true
+fi
+
 ./scripts/build-engine-ui.sh
 
 ###########################
@@ -49,9 +53,3 @@ git pull
 cp -rf src/ ../${TARGET_PATH}/src/
 cp package.json ../${TARGET_PATH}/
 echo "BUild dia-soi-boilerplate-node successfully"
-
-###########################
-echo "Install production node_modules..."
-cd $ROOT_DIT
-cd ${TARGET_PATH}
-npm install --production

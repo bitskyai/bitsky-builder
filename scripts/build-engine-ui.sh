@@ -10,6 +10,7 @@
 # 4. NOT_START_SERVER: After build successful don't start server
 # 5. ENGINE_UI_FOLDER_NAME: folder name for `dia-engine` with `dia-ui`. Defualt is `engine-ui`
 # 6. NOT_INSTALL_NODE_MODULES: Don't install node_modules in target folder
+# 7. TARGET: ['electron', 'admin', 'ui']
 
 if [[ -z "${BRANCH_UI}" ]]; then
   BRANCH_UI="develop"
@@ -54,7 +55,7 @@ echo "Current Folder: " && pwd
 git checkout ${BRANCH_UI}
 git pull
 npm install
-npm run build-admin
+npm run build-"${TARGET}"
 cp -rf dist/ ../${TARGET_PATH}/src/public/
 echo "BUild dia-ui successfully"
 

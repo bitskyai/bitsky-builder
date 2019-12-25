@@ -28,6 +28,7 @@ if [[ -z "${NOT_INSTALL_NODE_MODULES}" ]]; then
   export NOT_INSTALL_NODE_MODULES=true
 fi
 
+export TARGET="electron"
 ./scripts/build-engine-ui.sh
 
 ###########################

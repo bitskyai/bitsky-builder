@@ -40,7 +40,7 @@ if [[ -z "${BRANCH_SOI}" ]]; then
 fi
 
 if [[ -z "${SOI_FOLDER_NAME}" ]]; then
-  SOI_FOLDER_NAME="soi"
+  SOI_FOLDER_NAME="analystservice"
 fi
 
 TARGET_PATH=${DIST}${SOI_FOLDER_NAME}

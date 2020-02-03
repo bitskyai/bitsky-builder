@@ -10,3 +10,6 @@
 [submodule "dia-soi-boilerplate-node"]
 	path = dia-soi-boilerplate-node
 	url = https://github.com/munew/dia-soi-boilerplate-node.git
+[submodule "dia-agents-browserextensions"]
+	path = dia-agents-browserextensions
+	url = https://github.com/munew/dia-agents-browserextensions.git

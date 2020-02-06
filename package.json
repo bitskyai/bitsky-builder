@@ -1,0 +1,29 @@
+{
+  "name": "dia",
+  "version": "0.1.0",
+  "description": "DIA central git",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test",
+    "build-engine-ui": "./scripts/build-engine-ui.sh",
+    "build-electron": "cross-env BUILD_TARGET_PLATFORM=electron ./scripts/build-electron.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/munew/dia.git"
+  },
+  "keywords": [
+    "automation",
+    "data crawling"
+  ],
+  "author": "munewio@gmail.com",
+  "license": "Apache License 2.0",
+  "bugs": {
+    "url": "https://github.com/munew/dia/issues"
+  },
+  "homepage": "https://github.com/munew/dia#readme",
+  "devDependencies": {
+    "cross-env": "^6.0.3",
+    "rimraf": "^3.0.0"
+  }
+}

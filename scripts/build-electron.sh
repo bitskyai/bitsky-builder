@@ -53,4 +53,4 @@ git checkout ${BRANCH_SOI}
 git pull
 cp -rf src/ ../${TARGET_PATH}/src/
 cp package.json ../${TARGET_PATH}/
-echo "BUild dia-soi-boilerplate-node successfully"
+echo "Build dia-soi-boilerplate-node successfully"

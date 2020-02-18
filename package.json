@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "npm run test",
-    "build-engine-ui": "./scripts/build-engine-ui.sh",
-    "build-electron": "cross-env BUILD_TARGET_PLATFORM=electron ./scripts/build-electron.sh"
+    "build-engine-ui": "cross-env TARGET=ui ./scripts/build-engine-ui.sh",
+    "build-munew-engine-ui": "cross-env TARGET=admin ./scripts/build-munew-engine-ui.sh",
+    "build-electron": "cross-env TARGET=electron ./scripts/build-electron.sh"
   },
   "repository": {
     "type": "git",

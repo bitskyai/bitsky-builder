@@ -13,3 +13,6 @@
 [submodule "dia-agents-browserextensions"]
 	path = dia-agents-browserextensions
 	url = https://github.com/munew/dia-agents-browserextensions.git
+[submodule "munew-engine-ui"]
+	path = munew-engine-ui
+	url = https://github.com/munew/munew-engine-ui.git

@@ -38,6 +38,8 @@ rm -rf ${DIST}/openapi.yml
 rm -rf ${DIST}/package-lock.json
 rm -rf ${DIST}/yarn.lock
 rm -rf ${DIST}/node_modules
+rm -rf ${DIST}/.dockerignore
+rm -rf ${DIST}/Dockerfile
 
 ###########################
 echo "Start build dia-engine..."
@@ -53,6 +55,8 @@ cp app.json ../${TARGET_PATH}
 cp openapi.yml ../${TARGET_PATH}
 # cp Procfile ../${TARGET_PATH}
 cp package-lock.json ../${TARGET_PATH}
+cp .dockerignore ../${TARGET_PATH}
+cp Dockerfile ../${TARGET_PATH}
 echo "Build dia-engine successfully"
 
 ###########################

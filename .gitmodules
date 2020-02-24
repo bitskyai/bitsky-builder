@@ -16,3 +16,6 @@
 [submodule "munew-engine-ui"]
 	path = munew-engine-ui
 	url = https://github.com/munew/munew-engine-ui.git
+[submodule "munew.github.io"]
+	path = munew.github.io
+	url = https://github.com/munew/munew.github.io.git

@@ -19,3 +19,9 @@
 [submodule "munew.github.io"]
 	path = munew.github.io
 	url = https://github.com/munew/munew.github.io.git
+[submodule "dia-agents-baseservice"]
+	path = dia-agents-baseservice
+	url = https://github.com/munew/dia-agents-baseservice.git
+[submodule "dia-agents-service"]
+	path = dia-agents-service
+	url = https://github.com/munew/dia-agents-service.git

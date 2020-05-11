@@ -23,4 +23,17 @@ fi
 TARGET_PATH=${DIST}
 echo ${TARGET_PATH}
 
-find ./${TARGET_PATH} ! -name 'CNAME' ! -name '.git' ! -name '.gitignore' ! -name '.'  ! -name '..'   -print0 | xargs -0 rm -rf
+cd ./${TARGET_PATH}
+find . ! -name 'CNAME' ! -name 'README.md' ! -name '.git' ! -name '.gitignore' ! -name '.'  ! -name '..' -print0 | xargs -0 rm -rf
+cd ..
+
+###########################
+echo "Start build dia-ui..."
+cd ./dia-ui
+echo "Current Folder: " && pwd
+git checkout ${BRANCH_UI}
+git pull
+npm install
+npm run build-landing
+cp -rf dist/ ../${TARGET_PATH}
+echo "Build dia-ui successfully"

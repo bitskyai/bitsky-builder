@@ -25,3 +25,6 @@
 [submodule "dia-agents-service"]
 	path = dia-agents-service
 	url = https://github.com/munew/dia-agents-service.git
+[submodule "dia-agents-headless"]
+	path = dia-agents-headless
+	url = https://github.com/munew/dia-agents-headless.git

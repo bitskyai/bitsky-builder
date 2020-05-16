@@ -13,6 +13,8 @@ on:
 jobs: 
   build:
     runs-on: ubuntu-latest
+    env: 
+      working-directory: ./dia-agents-baseservice
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
@@ -20,6 +22,8 @@ jobs:
           node-version: '12'
           registry-url: https://registry.npmjs.org/
       - run: yarn install
+        working-directory: ${{env.working-directory}}
       - run: npm publish --access public
+        working-directory: ${{env.working-directory}}
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}

@@ -21,20 +21,25 @@ if [[ -z "${BRANCH_ENGINE}" ]]; then
 fi
 
 if [[ -z "${DIST}" ]]; then
-  DIST="build/"
+  DIST="munew-engine-ui/"
 fi
 
-if [[ -z "${ENGINE_UI_FOLDER_NAME}" ]]; then
-  ENGINE_UI_FOLDER_NAME="engine-ui"
-fi
-
-TARGET_PATH=${DIST}${ENGINE_UI_FOLDER_NAME}
+TARGET_PATH=${DIST}
 
 echo ${TARGET_PATH}
 
 # Remove previous build
-rm -rf ${TARGET_PATH}
-mkdir -p ${TARGET_PATH}
+rm -rf ${DIST}/src
+rm -rf ${DIST}/build
+rm -rf ${DIST}/package.json
+rm -rf ${DIST}/app.json
+rm -rf ${DIST}/openapi.yml
+# rm -rf ${DIST}/Procfile
+rm -rf ${DIST}/package-lock.json
+rm -rf ${DIST}/yarn.lock
+rm -rf ${DIST}/node_modules
+rm -rf ${DIST}/.dockerignore
+rm -rf ${DIST}/Dockerfile
 
 ###########################
 echo "Start build dia-engine..."
@@ -44,8 +49,14 @@ git checkout ${BRANCH_ENGINE}
 git pull
 npm install
 npm run tsc
-cp -rf build/ ../${TARGET_PATH}/src
+cp -rf build/ ../${TARGET_PATH}/build
 cp package.json ../${TARGET_PATH}
+cp app.json ../${TARGET_PATH}
+cp openapi.yml ../${TARGET_PATH}
+# cp Procfile ../${TARGET_PATH}
+cp package-lock.json ../${TARGET_PATH}
+cp .dockerignore ../${TARGET_PATH}
+cp Dockerfile ../${TARGET_PATH}
 echo "Build dia-engine successfully"
 
 ###########################
@@ -56,19 +67,5 @@ git checkout ${BRANCH_UI}
 git pull
 npm install
 npm run build-"${TARGET}"
-cp -rf dist/ ../${TARGET_PATH}/src/public/
-echo "Build dia-ui successfully"
-
-###########################
-if [[ -z "${NOT_INSTALL_NODE_MODULES}" ]]; then
-  echo "Install production node_modules..."
-  cd ../${TARGET_PATH}
-  npm install --production
-fi
-
-###########################
-# Default start server
-if [[ -z "${NOT_START_SERVER}" ]]; then
-  echo "Start Server"
-  node ./src/index.js
-fi
+cp -rf dist/ ../${TARGET_PATH}/build/public/
+echo "BUild dia-ui successfully"

@@ -13,3 +13,18 @@
 [submodule "dia-agents-browserextensions"]
 	path = dia-agents-browserextensions
 	url = https://github.com/munew/dia-agents-browserextensions.git
+[submodule "munew-engine-ui"]
+	path = munew-engine-ui
+	url = https://github.com/munew/munew-engine-ui.git
+[submodule "munew.github.io"]
+	path = munew.github.io
+	url = https://github.com/munew/munew.github.io.git
+[submodule "dia-agents-baseservice"]
+	path = dia-agents-baseservice
+	url = https://github.com/munew/dia-agents-baseservice.git
+[submodule "dia-agents-service"]
+	path = dia-agents-service
+	url = https://github.com/munew/dia-agents-service.git
+[submodule "dia-agents-headless"]
+	path = dia-agents-headless
+	url = https://github.com/munew/dia-agents-headless.git

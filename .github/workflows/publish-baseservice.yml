@@ -12,6 +12,7 @@ on:
 
 jobs:
   build:
+    if: contains(github.ref, "release/agents-basesevice")
     runs-on: ubuntu-latest
     # env:
     #   working-directory: ./dia-agents-baseservice

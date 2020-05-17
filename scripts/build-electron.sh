@@ -58,7 +58,7 @@ echo "Build dia-soi-boilerplate-node successfully"
 echo "Start build electron app"
 cd $ROOT_DIT
 
-cd ./dia-soi-boilerplate-node
+cd ./dia-electron
 echo "Current Folder: " && pwd
 if [[ "${BRANCH_ELECTRON}" ]]; then
   git checkout ${BRANCH_ELECTRON}

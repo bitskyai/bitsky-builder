@@ -8,12 +8,13 @@ on:
       - published
 jobs:
   release:
+    if: contains(github.ref, "release/bitspider")
     runs-on: ${{ matrix.os }}
 
     # Platforms to build on/for
     strategy:
       matrix:
-        os: [macos-latest, windows-latest]
+        os: [macos-latest, ubuntu-latest]
         # os: [macos-latest]
     
     steps:

@@ -13,8 +13,8 @@ jobs:
     # Platforms to build on/for
     strategy:
       matrix:
-        #os: [macos-latest, windows-latest]
-        os: [macos-latest]
+        os: [macos-latest, windows-latest]
+        # os: [macos-latest]
     
     steps:
       - name: Checkout repository
@@ -30,6 +30,8 @@ jobs:
         run: ls -all && yarn install
       - name: Build
         run: npm run build-electron
+      - name: List generate files
+        run: cd ./dia-electron/out && ls -all
       - name: Get Release
         id: get_release
         uses: bruceadams/get-release@v1.2.0

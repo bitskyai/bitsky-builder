@@ -12,14 +12,6 @@
 # 6. NOT_INSTALL_NODE_MODULES: Don't install node_modules in target folder
 # 7. TARGET: ['electron', 'admin', 'ui']
 
-if [[ -z "${BRANCH_UI}" ]]; then
-  BRANCH_UI="develop"
-fi
-
-if [[ -z "${BRANCH_ENGINE}" ]]; then
-  BRANCH_ENGINE="develop"
-fi
-
 if [[ -z "${DIST}" ]]; then
   DIST="munew-engine-ui/"
 fi
@@ -45,9 +37,11 @@ rm -rf ${DIST}/Dockerfile
 echo "Start build dia-engine..."
 cd dia-engine
 echo "Current Folder: " && pwd
-git checkout ${BRANCH_ENGINE}
-git pull
-npm install
+if [[ "${BRANCH_ENGINE}" ]]; then
+  git checkout ${BRANCH_ENGINE}
+  git pull
+fi
+yarn install
 npm run tsc
 cp -rf build/ ../${TARGET_PATH}/build
 cp package.json ../${TARGET_PATH}
@@ -63,9 +57,11 @@ echo "Build dia-engine successfully"
 echo "Start build dia-ui..."
 cd ../dia-ui
 echo "Current Folder: " && pwd
-git checkout ${BRANCH_UI}
-git pull
-npm install
+if [[ "${BRANCH_UI}" ]]; then
+  git checkout ${BRANCH_UI}
+  git pull
+fi
+yarn install
 npm run build-"${TARGET}"
 cp -rf dist/ ../${TARGET_PATH}/build/public/
 echo "BUild dia-ui successfully"

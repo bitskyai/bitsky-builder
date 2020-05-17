@@ -8,7 +8,7 @@ on:
       - published
 jobs:
   release:
-    if: contains(github.ref, "release/bitspider")
+    if: github.ref == 'refs/heads/release/bitspider'
     runs-on: ${{ matrix.os }}
 
     # Platforms to build on/for

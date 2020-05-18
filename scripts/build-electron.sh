@@ -65,4 +65,4 @@ if [[ "${BRANCH_ELECTRON}" ]]; then
   git pull
 fi
 yarn install
-npm run package
+npm run make

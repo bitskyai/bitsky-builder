@@ -27,10 +27,10 @@ jobs:
           node-version: "12.x"
           registry-url: https://registry.npmjs.org/
       - name: Install node_modules
-        run: git status && pwd && ls -all && yarn install
+        run: git status && pwd && ls && yarn install
         working-directory: dia-agents-baseservice
       - name: Publish node_module
-        run: git status && pwd && ls -all && npm publish
+        run: git status && pwd && ls && npm publish
         working-directory: dia-agents-baseservice
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}

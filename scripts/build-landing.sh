@@ -13,7 +13,7 @@
 # 7. TARGET: ['electron', 'admin', 'ui']
 pwd
 
-if [[ -z "${DIST}" ]]; then
+if [ -z "${DIST}" ]; then
   DIST="munew.github.io/"
 fi
 
@@ -28,7 +28,7 @@ cd ..
 echo "Start build dia-ui..."
 cd ./dia-ui
 echo "Current Folder: " && pwd
-if [[ "${BRANCH_UI}" ]]; then
+if [ "${BRANCH_UI}" ]; then
   git checkout ${BRANCH_UI}
   git pull
 fi

@@ -17,8 +17,8 @@ jobs:
     # Platforms to build on/for
     strategy:
       matrix:
-        # os: [macos-latest, ubuntu-latest]
-        os: [macos-latest]
+        os: [windows-latest]
+        # os: [macos-latest]
     
     steps:
       - name: Checkout repository
@@ -31,11 +31,11 @@ jobs:
           node-version: "12.x"
           registry-url: https://registry.npmjs.org/
       - name: Install node_modules
-        run: ls -all && yarn install
+        run: ls && yarn install
       - name: Build
         run: npm run build-electron
       - name: List generate files
-        run: cd ./dia-electron/out && ls -all
+        run: cd ./dia-electron/out && ls
       - name: Get Release
         id: get_release
         uses: bruceadams/get-release@v1.2.0

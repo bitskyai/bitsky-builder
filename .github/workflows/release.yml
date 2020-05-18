@@ -17,8 +17,8 @@ jobs:
     # Platforms to build on/for
     strategy:
       matrix:
-        os: [windows-latest]
-        # os: [macos-latest]
+        os: [ubuntu-latest]
+        # os: [macos-latest, windows-latest]
     
     steps:
       - name: Checkout repository

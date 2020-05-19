@@ -5,14 +5,13 @@
 name: Publish Base Service
 on:
   release:
-    branches:
-      - release/agents-basesevice
     types:
       - published
 
 jobs:
   build:
-    # if: github.ref == 'refs/heads/release/agents-basesevice'
+    # only trigger when branch is `release/agents-basesevice`
+    if: ${{ github.ref == 'refs/heads/release/agents-basesevice' }}
     runs-on: ubuntu-latest
     # env:
     #   working-directory: ./dia-agents-baseservice

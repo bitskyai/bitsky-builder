@@ -2,8 +2,6 @@ name: Build/Release
 
 on:
   release:
-    branches:
-      - release/bitspider
     types:
       - published
 env:
@@ -11,7 +9,8 @@ env:
 
 jobs:
   release:
-    # if: github.ref == 'refs/heads/release/bitspider'
+    # only trigger when it is `release/bitspider` branch
+    if: ${{ github.ref == 'refs/heads/release/bitspider' }}
     runs-on: ${{ matrix.os }}
 
     # Platforms to build on/for

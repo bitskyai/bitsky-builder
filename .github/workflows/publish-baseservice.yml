@@ -10,12 +10,13 @@ on:
 
 jobs:
   build:
-    # only trigger when branch is `release/agents-basesevice`
-    if: ${{ github.ref == 'refs/heads/release/agents-basesevice' }}
     runs-on: ubuntu-latest
     # env:
     #   working-directory: ./dia-agents-baseservice
+    # only trigger when branch is ``
+    # if: ${{ github.ref == 'refs/heads/release/agents-basesevice' }}
     steps:
+      - run: echo ${GITHUB_REF}
       - name: Checkout repository
         uses: actions/checkout@v2.1.0
         with:

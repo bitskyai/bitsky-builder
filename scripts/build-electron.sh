@@ -17,15 +17,15 @@
 ROOT_DIT=$(pwd)
 echo $ROOT_DIT
 # Build engine-ui first
-if [[ -z "${DIST}" ]]; then
+if [ -z "${DIST}" ]; then
   export DIST="dia-electron/app/"
 fi
 
-if [[ -z "${NOT_START_SERVER}" ]]; then
+if [ -z "${NOT_START_SERVER}" ]; then
   export NOT_START_SERVER=true
 fi
 
-if [[ -z "${NOT_INSTALL_NODE_MODULES}" ]]; then
+if [ -z "${NOT_INSTALL_NODE_MODULES}" ]; then
   export NOT_INSTALL_NODE_MODULES=true
 fi
 
@@ -36,7 +36,7 @@ export TARGET="electron"
 echo "Start build dia-soi-boilerplate-node..."
 cd $ROOT_DIT
 
-if [[ -z "${SOI_FOLDER_NAME}" ]]; then
+if [ -z "${SOI_FOLDER_NAME}" ]; then
   SOI_FOLDER_NAME="analystservice"
 fi
 
@@ -46,7 +46,7 @@ rm -rf ${TARGET_PATH}
 mkdir -p ${TARGET_PATH}
 cd ./dia-soi-boilerplate-node
 echo "Current Folder: " && pwd
-if [[ "${BRANCH_SOI}" ]]; then
+if [ "${BRANCH_SOI}" ]; then
   git checkout ${BRANCH_SOI}
   git pull
 fi
@@ -58,11 +58,11 @@ echo "Build dia-soi-boilerplate-node successfully"
 echo "Start build electron app"
 cd $ROOT_DIT
 
-cd ./dia-soi-boilerplate-node
+cd ./dia-electron
 echo "Current Folder: " && pwd
-if [[ "${BRANCH_ELECTRON}" ]]; then
+if [ "${BRANCH_ELECTRON}" ]; then
   git checkout ${BRANCH_ELECTRON}
   git pull
 fi
 yarn install
-npm run package
+npm run make

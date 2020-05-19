@@ -12,7 +12,7 @@
 # 6. NOT_INSTALL_NODE_MODULES: Don't install node_modules in target folder
 # 7. TARGET: ['electron', 'admin', 'ui']
 
-if [[ -z "${DIST}" ]]; then
+if [ -z "${DIST}" ]; then
   DIST="munew-engine-ui/"
 fi
 
@@ -37,7 +37,7 @@ rm -rf ${DIST}/Dockerfile
 echo "Start build dia-engine..."
 cd dia-engine
 echo "Current Folder: " && pwd
-if [[ "${BRANCH_ENGINE}" ]]; then
+if [ "${BRANCH_ENGINE}" ]; then
   git checkout ${BRANCH_ENGINE}
   git pull
 fi
@@ -57,7 +57,7 @@ echo "Build dia-engine successfully"
 echo "Start build dia-ui..."
 cd ../dia-ui
 echo "Current Folder: " && pwd
-if [[ "${BRANCH_UI}" ]]; then
+if [ "${BRANCH_UI}" ]; then
   git checkout ${BRANCH_UI}
   git pull
 fi

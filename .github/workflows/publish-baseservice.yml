@@ -10,27 +10,26 @@ on:
 
 jobs:
   build:
+    # only trigger when it is `release/agents-basesevice` branch
+    # if: github.ref == 'refs/heads/release/agents-basesevice'
     runs-on: ubuntu-latest
     # env:
     #   working-directory: ./dia-agents-baseservice
-    # only trigger when branch is ``
-    # if: ${{ github.ref == 'refs/heads/release/agents-basesevice' }}
     steps:
-      - run: env
-      # - name: Checkout repository
-      #   uses: actions/checkout@v2.1.0
-      #   with:
-      #     submodules: true
-      # - name: Setup Node.js
-      #   uses: actions/setup-node@v1.4.2
-      #   with:
-      #     node-version: "12.x"
-      #     registry-url: https://registry.npmjs.org/
-      # - name: Install node_modules
-      #   run: git status && pwd && ls && yarn install
-      #   working-directory: dia-agents-baseservice
-      # - name: Publish node_module
-      #   run: git status && pwd && ls && npm publish
-      #   working-directory: dia-agents-baseservice
-      #   env:
-      #     NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+      - name: Checkout repository
+        uses: actions/checkout@v2.1.0
+        with:
+          submodules: true
+      - name: Setup Node.js
+        uses: actions/setup-node@v1.4.2
+        with:
+          node-version: "12.x"
+          registry-url: https://registry.npmjs.org/
+      - name: Install node_modules
+        run: git status && pwd && ls && yarn install
+        working-directory: dia-agents-baseservice
+      - name: Publish node_module
+        run: git status && pwd && ls && npm publish
+        working-directory: dia-agents-baseservice
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}

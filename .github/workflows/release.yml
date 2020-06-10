@@ -47,3 +47,39 @@ jobs:
           asset_path: ./dia-electron/out/munew.zip
           asset_name: 'munew-${{ matrix.os }}.zip'
           asset_content_type: application/zip
+  createPR:
+    needs: release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2.1.0
+        with:
+          submodules: true
+      - name: Get release version
+        run: |
+          VERSION=${GITHUB_REF##*/v}
+          echo "::set-env name=VERSION::${GITHUB_REF##*/v}"
+      - name: Create Pull Request to `master`
+        uses: repo-sync/pull-request@v2
+        with:
+          source_branch: "release/v${{env.VERSION}}"        # If blank, default: triggered branch
+          destination_branch: "master"                      # If blank, default: master
+          pr_title: "Merge to master - ${{env.VERSION}}"              # Title of pull request
+          pr_body: ":crown: successfully publish ${{env.VERSION}}. Pulling release/v${{env.VERSION}} into master"                                      # Full markdown support, requires pr_title to be set
+          pr_reviewer: "neoskx"                         # Comma-separated list (no spaces)
+          pr_assignee: "neoskx"                         # Comma-separated list (no spaces)
+          pr_label: "release"                               # Comma-separated list (no spaces)
+          # pr_draft: true                                    # Creates pull request as draft
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Create Pull Request to `develop`
+        uses: repo-sync/pull-request@v2
+        with:
+          source_branch: "release/v${{env.VERSION}}"        # If blank, default: triggered branch
+          destination_branch: "develop"                      # If blank, default: master
+          pr_title: "Merge to develop - ${{env.VERSION}}"              # Title of pull request
+          pr_body: ":crown: successfully publish ${{env.VERSION}}. Pulling release/v${{env.VERSION}} into develop"                                      # Full markdown support, requires pr_title to be set
+          pr_reviewer: "neoskx"                         # Comma-separated list (no spaces)
+          pr_assignee: "neoskx"                         # Comma-separated list (no spaces)
+          pr_label: "release"                               # Comma-separated list (no spaces)
+          # pr_draft: true                                    # Creates pull request as draft
+          github_token: ${{ secrets.GITHUB_TOKEN }}

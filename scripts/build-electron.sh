@@ -55,6 +55,54 @@ cp package.json ../${TARGET_PATH}/
 echo "Build dia-soi-boilerplate-node successfully"
 
 ###########################
+echo "Start copy dia-agents-headless"
+cd $ROOT_DIT
+
+if [ -z "${HEADLESS_FOLDER_NAME}" ]; then
+  HEADLESS_FOLDER_NAME="agents-headless"
+fi
+TARGET_PATH=${DIST}${HEADLESS_FOLDER_NAME}
+echo ${TARGET_PATH}
+rm -rf ${TARGET_PATH}
+mkdir -p ${TARGET_PATH}
+cd ./dia-agents-headless
+echo "Current Folder: " && pwd
+if [ "${BRANCH_HEADLESS}" ]; then
+  git checkout ${BRANCH_HEADLESS}
+  git pull
+fi
+cp -rf workers/ ../${TARGET_PATH}/workers/
+cp index.js ../${TARGET_PATH}/
+cp server.js ../${TARGET_PATH}/
+cp package.json ../${TARGET_PATH}/
+cp utils.js ../${TARGET_PATH}/
+echo "Build dia-agents-headless successfully"
+
+###########################
+echo "Start copy dia-agents-service"
+cd $ROOT_DIT
+
+if [ -z "${SERVICE_FOLDER_NAME}" ]; then
+  SERVICE_FOLDER_NAME="agents-service"
+fi
+TARGET_PATH=${DIST}${SERVICE_FOLDER_NAME}
+echo ${TARGET_PATH}
+rm -rf ${TARGET_PATH}
+mkdir -p ${TARGET_PATH}
+cd ./dia-agents-service
+echo "Current Folder: " && pwd
+if [ "${BRANCH_SERVICE}" ]; then
+  git checkout ${BRANCH_SERVICE}
+  git pull
+fi
+
+cp index.js ../${TARGET_PATH}/
+cp server.js ../${TARGET_PATH}/
+cp utils.js ../${TARGET_PATH}/
+cp package.json ../${TARGET_PATH}/
+echo "Build dia-agents-service successfully"
+
+###########################
 echo "Start build electron app"
 cd $ROOT_DIT
 
@@ -64,5 +112,5 @@ if [ "${BRANCH_ELECTRON}" ]; then
   git checkout ${BRANCH_ELECTRON}
   git pull
 fi
-yarn install
-npm run make
+# yarn install
+# npm run make

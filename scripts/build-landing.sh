@@ -12,11 +12,8 @@
 # 6. NOT_INSTALL_NODE_MODULES: Don't install node_modules in target folder
 # 7. TARGET: ['electron', 'admin', 'ui']
 pwd
-if [[ -z "${BRANCH_UI}" ]]; then
-  BRANCH_UI="develop"
-fi
 
-if [[ -z "${DIST}" ]]; then
+if [ -z "${DIST}" ]; then
   DIST="munew.github.io/"
 fi
 
@@ -31,9 +28,11 @@ cd ..
 echo "Start build dia-ui..."
 cd ./dia-ui
 echo "Current Folder: " && pwd
-git checkout ${BRANCH_UI}
-git pull
-npm install
+if [ "${BRANCH_UI}" ]; then
+  git checkout ${BRANCH_UI}
+  git pull
+fi
+yarn install
 npm run build-landing
 cp -rf dist/ ../${TARGET_PATH}
 echo "Build dia-ui successfully"

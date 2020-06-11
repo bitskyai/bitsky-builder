@@ -1,6 +1,6 @@
 {
   "name": "dia",
-  "version": "0.3.1",
+  "version": "0.2.2",
   "description": "DIA central git",
   "main": "index.js",
   "scripts": {

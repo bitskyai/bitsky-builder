@@ -1,6 +1,6 @@
 {
   "name": "dia",
-  "version": "0.2.3",
+  "version": "0.3.0",
   "description": "DIA central git",
   "main": "index.js",
   "scripts": {
@@ -19,7 +19,7 @@
     "data crawling"
   ],
   "author": "munewio@gmail.com",
-  "license": "Apache License 2.0",
+  "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/munew/dia/issues"
   },

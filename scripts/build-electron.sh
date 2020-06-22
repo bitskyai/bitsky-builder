@@ -75,6 +75,7 @@ cp -rf workers/ ../${TARGET_PATH}/workers/
 cp index.js ../${TARGET_PATH}/
 cp server.js ../${TARGET_PATH}/
 cp package.json ../${TARGET_PATH}/
+cp agentConfigs.js ../${TARGET_PATH}/
 cp utils.js ../${TARGET_PATH}/
 echo "Build dia-agents-headless successfully"
 

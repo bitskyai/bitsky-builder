@@ -25,7 +25,6 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
           repository: munew/headless-agent
           tag_with_ref: true
-          path: ./dia-agents-headless
 
   release_service_agent:
     name: Push Service Agent Docker image to Docker Hub
@@ -106,7 +105,7 @@ jobs:
   #         asset_content_type: application/zip
 
   createPR:
-    needs: [release_headless_agent, release_service_agent, release_munew_ui]
+    needs: release_headless_agent
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository

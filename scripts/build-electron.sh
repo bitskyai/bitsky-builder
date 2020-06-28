@@ -113,5 +113,5 @@ if [ "${BRANCH_ELECTRON}" ]; then
   git checkout ${BRANCH_ELECTRON}
   git pull
 fi
-yarn install
-npm run make
+# yarn install
+# npm run make

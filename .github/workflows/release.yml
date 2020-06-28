@@ -8,47 +8,105 @@ env:
   GITHUB_TOKEN: ${{ github.token }}
 
 jobs:
-  release:
-    # only trigger when it is `release/bitspider` branch
-    # if: github.ref == 'refs/heads/release/bitspider'
-    runs-on: ${{ matrix.os }}
-
-    # Platforms to build on/for
-    strategy:
-      matrix:
-        os: [macos-latest, windows-latest, ubuntu-latest]
-    
+  release_headless_agent:
+    name: Push Headless Agent Docker image to Docker Hub
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Check out the repo
         uses: actions/checkout@v2.1.0
         with:
           submodules: true
-      - name: Setup Node.js
-        uses: actions/setup-node@v1.4.2
+      - name: Navigate to dia-agents-headless folder and List files
+        run: cd ./dia-agents-headless && ls
+      - name: Push to Docker Hub
+        uses: docker/build-push-action@v1
         with:
-          node-version: "12.x"
-          registry-url: https://registry.npmjs.org/
-      - name: Install node_modules
-        run: ls && yarn install
-      - name: Build
-        run: npm run build-electron
-      - name: List generate files
-        run: cd ./dia-electron/out && ls
-      - name: Get Release
-        id: get_release
-        uses: bruceadams/get-release@v1.2.0
-      - name: Upload Release Asset
-        id: upload-release-asset 
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          repository: munew/headless-agent
+          tag_with_ref: true
+          path: ./dia-agents-headless
+
+  release_service_agent:
+    name: Push Service Agent Docker image to Docker Hub
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v2.1.0
         with:
-          upload_url: ${{ steps.get_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-          asset_path: ./dia-electron/out/munew.zip
-          asset_name: 'munew-${{ matrix.os }}.zip'
-          asset_content_type: application/zip
+          submodules: true
+      - name: Navigate to dia-agents-service folder and List files
+        run: cd ./dia-agents-service && ls
+      - name: Push to Docker Hub
+        uses: docker/build-push-action@v1
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          repository: munew/service-agent
+          tag_with_ref: true
+          path: ./dia-agents-service
+
+  release_munew_ui:
+    name: Push Munew UI Docker image to Docker Hub
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v2.1.0
+        with:
+          submodules: true
+      - name: Navigate to munew-engine-ui folder and List files
+        run: cd ./munew-engine-ui && ls
+      - name: Push to Docker Hub
+        uses: docker/build-push-action@v1
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          repository: munew/engine-ui
+          tag_with_ref: true
+          path: ./munew-engine-ui
+  
+  # release_desktop_app:
+  #   # only trigger when it is `release/bitspider` branch
+  #   # if: github.ref == 'refs/heads/release/bitspider'
+  #   runs-on: ${{ matrix.os }}
+
+  #   # Platforms to build on/for
+  #   strategy:
+  #     matrix:
+  #       os: [macos-latest, windows-latest, ubuntu-latest]
+    
+  #   steps:
+  #     - name: Checkout repository
+  #       uses: actions/checkout@v2.1.0
+  #       with:
+  #         submodules: true
+  #     - name: Setup Node.js
+  #       uses: actions/setup-node@v1.4.2
+  #       with:
+  #         node-version: "12.x"
+  #         registry-url: https://registry.npmjs.org/
+  #     - name: Install node_modules
+  #       run: ls && yarn install
+  #     - name: Build
+  #       run: npm run build-electron
+  #     - name: List generate files
+  #       run: cd ./dia-electron/out && ls
+  #     - name: Get Release
+  #       id: get_release
+  #       uses: bruceadams/get-release@v1.2.0
+  #     - name: Upload Release Asset
+  #       id: upload-release-asset 
+  #       uses: actions/upload-release-asset@v1
+  #       env:
+  #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  #       with:
+  #         upload_url: ${{ steps.get_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+  #         asset_path: ./dia-electron/out/munew.zip
+  #         asset_name: 'munew-${{ matrix.os }}.zip'
+  #         asset_content_type: application/zip
+
   createPR:
-    needs: release
+    needs: [release_headless_agent, release_service_agent, release_munew_ui]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository

@@ -8,7 +8,24 @@ env:
   GITHUB_TOKEN: ${{ github.token }}
 
 jobs:
-  release:
+  release_headless_agent:
+    name: Push Headless Agent Docker image to Docker Hub
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v2.1.0
+        with:
+          submodules: true
+      - name: Navigate to dia-agents-headless folder and List files
+        run: cd ./dia-agents-headless && ls
+      - name: Push to Docker Hub
+        uses: docker/build-push-action@v1
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          repository: munew/headless-agent
+          tag_with_ref: true
+  release_desktop_app:
     # only trigger when it is `release/bitspider` branch
     # if: github.ref == 'refs/heads/release/bitspider'
     runs-on: ${{ matrix.os }}
@@ -48,7 +65,7 @@ jobs:
           asset_name: 'munew-${{ matrix.os }}.zip'
           asset_content_type: application/zip
   createPR:
-    needs: release
+    needs: release_headless_agent
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository

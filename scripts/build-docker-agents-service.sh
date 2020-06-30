@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ######################################################
-# Build munew-agents-service
+# Build munew/service-agent
 ######################################################
 
 ROOT_DIT=$(pwd)

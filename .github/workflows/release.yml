@@ -106,9 +106,7 @@ jobs:
           asset_content_type: application/zip
 
   createPR:
-    # needs: [release_headless_agent, release_service_agent, release_munew_ui, release_desktop_app]
-    # tmp 
-    needs: [release_desktop_app]
+    needs: [release_headless_agent, release_service_agent, release_munew_ui, release_desktop_app]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository

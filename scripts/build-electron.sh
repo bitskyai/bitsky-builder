@@ -10,7 +10,7 @@
 # 4. BRANCH_SOI: git branch for `dia-soi-boilerplate-node`. Default is `develop`
 # 5. ENGINE_UI_FOLDER_NAME: folder name for `dia-engine` with `dia-ui`. Defualt is `engine-ui`
 # 6. DIST: which folder to store build files. Default is `dist-engine-ui`
-# 7. SOI_FOLDER_NAME: Folder name for `dia-soi-boilerplate-node`. Default is `analystservice`
+# 7. SOI_FOLDER_NAME: Folder name for `dia-soi-boilerplate-node`. Default is `retailerservice`
 # 8. NOT_START_SERVER: After build successful don't start server
 
 ###########################
@@ -37,7 +37,7 @@ echo "Start build dia-soi-boilerplate-node..."
 cd $ROOT_DIT
 
 if [ -z "${SOI_FOLDER_NAME}" ]; then
-  SOI_FOLDER_NAME="analystservice"
+  SOI_FOLDER_NAME="retailerservice"
 fi
 
 TARGET_PATH=${DIST}${SOI_FOLDER_NAME}
@@ -50,8 +50,14 @@ if [ "${BRANCH_SOI}" ]; then
   git checkout ${BRANCH_SOI}
   git pull
 fi
-cp -rf src/ ../${TARGET_PATH}/src/
+# cp -rf src/ ../${TARGET_PATH}/src/
+cp index.js ../${TARGET_PATH}/
+cp server.js ../${TARGET_PATH}/
+cp worker.js ../${TARGET_PATH}/
+cp -rf utils ../${TARGET_PATH}/
+cp README.md ../${TARGET_PATH}/
 cp package.json ../${TARGET_PATH}/
+cp -rf public ../${TARGET_PATH}/
 echo "Build dia-soi-boilerplate-node successfully"
 
 ###########################

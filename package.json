@@ -1,7 +1,7 @@
 {
-  "name": "dia",
+  "name": "bitsky",
   "version": "0.7.0",
-  "description": "DIA central git",
+  "description": "bitsky central git",
   "main": "index.js",
   "scripts": {
     "test": "npm run test",
@@ -13,18 +13,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/munew/dia.git"
+    "url": "https://github.com/bitskyai/bitsky.git"
   },
   "keywords": [
     "automation",
     "data crawling"
   ],
-  "author": "munewio@gmail.com",
+  "author": "bitskyai@gmail.com",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/munew/dia/issues"
+    "url": "https://github.com/bitskyai/bitsky/issues"
   },
-  "homepage": "https://github.com/munew/dia#readme",
+  "homepage": "https://github.com/bitskyai/bitsky#readme",
   "devDependencies": {
     "cross-env": "^6.0.3",
     "rimraf": "^3.0.0"

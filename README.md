@@ -1,4 +1,4 @@
-# dia
+# BitSky
 
 ## How to develop
 

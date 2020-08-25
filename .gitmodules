@@ -19,3 +19,6 @@
 [submodule "bitskyai.github.io"]
 	path = bitskyai.github.io
 	url = https://github.com/bitskyai/bitskyai.github.io.git
+[submodule "bitsky-desktop-app"]
+	path = bitsky-desktop-app
+	url = https://github.com/bitskyai/bitsky-desktop-app.git

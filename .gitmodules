@@ -4,9 +4,6 @@
 [submodule "bitsky-service-producer"]
 	path = bitsky-service-producer
 	url = https://github.com/bitskyai/bitsky-service-producer.git
-[submodule "bitsky-electron"]
-	path = bitsky-electron
-	url = https://github.com/bitskyai/bitsky-electron.git
 [submodule "bitsky-supplier"]
 	path = bitsky-supplier
 	url = https://github.com/bitskyai/bitsky-supplier.git

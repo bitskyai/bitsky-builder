@@ -7,5 +7,5 @@
 ROOT_DIT=$(pwd)
 echo $ROOT_DIT
 
-cd dia-agents-headless
-docker build -t munew/headless-agent -f Dockerfile .
+cd bitsky-headless-producer
+docker build -t bitskyai/headless-producer -f Dockerfile .

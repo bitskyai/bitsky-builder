@@ -1,0 +1,24 @@
+[submodule "bitsky-headless-producer"]
+	path = bitsky-headless-producer
+	url = https://github.com/bitskyai/bitsky-headless-producer.git
+[submodule "bitsky-service-producer"]
+	path = bitsky-service-producer
+	url = https://github.com/bitskyai/bitsky-service-producer.git
+[submodule "bitsky-electron"]
+	path = bitsky-electron
+	url = https://github.com/bitskyai/bitsky-electron.git
+[submodule "bitsky-supplier"]
+	path = bitsky-supplier
+	url = https://github.com/bitskyai/bitsky-supplier.git
+[submodule "bitsky-hello-retailer"]
+	path = bitsky-hello-retailer
+	url = https://github.com/bitskyai/bitsky-hello-retailer.git
+[submodule "bitsky-ui"]
+	path = bitsky-ui
+	url = https://github.com/bitskyai/bitsky-ui.git
+[submodule "bitsky"]
+	path = bitsky
+	url = https://github.com/bitskyai/bitsky.git
+[submodule "bitskyai.github.io"]
+	path = bitskyai.github.io
+	url = https://github.com/bitskyai/bitskyai.github.io.git

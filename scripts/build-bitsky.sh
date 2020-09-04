@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ###########################
-# Build dia engine with ui
+# Build BitSky web application
 ###########################
 # Available Envs:
 # 1. BRANCH_UI: git branch for `dia-ui`. Default is `develop`

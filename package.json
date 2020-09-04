@@ -1,7 +1,7 @@
 {
-  "name": "bitsky",
+  "name": "bitsky-builder",
   "version": "0.7.0",
-  "description": "bitsky central git",
+  "description": "Build BitSky Application, docker images",
   "main": "index.js",
   "scripts": {
     "test": "npm run test",
@@ -9,7 +9,7 @@
     "build-engine-ui": "cross-env TARGET=ui bash ./scripts/build-engine-ui.sh",
     "build-landing": "cross-env TARGET=landing bash ./scripts/build-landing.sh",
     "build-munew-engine-ui": "cross-env TARGET=admin bash ./scripts/build-munew-engine-ui.sh",
-    "build-electron": "cross-env TARGET=electron bash ./scripts/build-electron.sh"
+    "build-desktop-app": "cross-env TARGET=electron bash ./scripts/build-desktop-app.sh"
   },
   "repository": {
     "type": "git",
@@ -19,7 +19,7 @@
     "automation",
     "data crawling"
   ],
-  "author": "bitskyai@gmail.com",
+  "author": "help.bitskyai@gmail.com",
   "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/bitskyai/bitsky/issues"

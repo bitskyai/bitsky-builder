@@ -1,4 +1,4 @@
-# BitSky
+# BitSky Builder
 
 ## How to develop
 

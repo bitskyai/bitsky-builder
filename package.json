@@ -1,15 +1,18 @@
 {
-  "name": "bitsky-builder",
-  "version": "0.7.0",
+  "name": "@bitskyai/builder",
+  "version": "0.1.0",
   "description": "Build BitSky Application, docker images",
   "main": "index.js",
   "scripts": {
     "test": "npm run test",
-    "build-headless-producer": "./scripts/build-agents-headless.sh",
-    "build-engine-ui": "cross-env TARGET=ui bash ./scripts/build-engine-ui.sh",
+    "build-docker-web-app": "./scripts/build-docker-web-app.sh",
+    "build-docker-service-producer": "./scripts/build-docker-service-producer.sh",
+    "build-docker-headless-producer": "./scripts/build-docker-headless-producer.sh",
+    "build-full-features-web-app": "cross-env TARGET=ui bash ./scripts/build-full-features-web-app.sh",
     "build-landing": "cross-env TARGET=landing bash ./scripts/build-landing.sh",
-    "build-munew-engine-ui": "cross-env TARGET=admin bash ./scripts/build-munew-engine-ui.sh",
-    "build-desktop-app": "cross-env TARGET=electron bash ./scripts/build-desktop-app.sh"
+    "build-web-app": "cross-env TARGET=admin bash ./scripts/build-web-app.sh",
+    "build-desktop-app": "cross-env TARGET=electron bash ./scripts/build-desktop-app.sh",
+    "copy-web-app-to-desktop-app": "cross-env TARGET=electron NOT_MAKE_APP=true bash ./scripts/build-desktop-app.sh"
   },
   "repository": {
     "type": "git",
@@ -26,7 +29,7 @@
   },
   "homepage": "https://github.com/bitskyai/bitsky#readme",
   "devDependencies": {
-    "cross-env": "^6.0.3",
-    "rimraf": "^3.0.0"
+    "cross-env": "^7.0.2",
+    "rimraf": "^3.0.2"
   }
 }

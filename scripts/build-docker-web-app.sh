@@ -1,11 +1,11 @@
 #!/bin/sh
 
 ######################################################
-# Build bitskyai/service-producer
+# Build bitskyai/web-app
 ######################################################
 
 ROOT_DIR=$(pwd)
 echo "Root Folder: $ROOT_DIR"
 
-cd bitsky-service-producer
-docker build -t bitskyai/service-producer -f Dockerfile .
+cd bitsky-web-app
+docker build -t bitskyai/web-app -f Dockerfile .

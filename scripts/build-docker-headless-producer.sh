@@ -1,11 +1,11 @@
 #!/bin/sh
 
 ######################################################
-# Build munew/headless-agent
+# Build bitskyai/headless-producer
 ######################################################
 
-ROOT_DIT=$(pwd)
-echo $ROOT_DIT
+ROOT_DIR=$(pwd)
+echo "Root Folder: $ROOT_DIR"
 
 cd bitsky-headless-producer
 docker build -t bitskyai/headless-producer -f Dockerfile .

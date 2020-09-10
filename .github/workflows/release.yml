@@ -46,7 +46,7 @@ jobs:
           tag_with_ref: true
           path: ./bitsky-service-producer
 
-  release_bitsky:
+  release_web_app:
     name: Push BitSky Docker image to Docker Hub
     runs-on: ubuntu-latest
     steps:
@@ -54,16 +54,16 @@ jobs:
         uses: actions/checkout@v2.1.0
         with:
           submodules: true
-      - name: Navigate to bitsky folder and List files
-        run: cd ./bitsky && ls
+      - name: Navigate to bitsky-web-app folder and List files
+        run: cd ./bitsky-web-app && ls
       - name: Push to Docker Hub
         uses: docker/build-push-action@v1
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-          repository: bitskyai/bitsky
+          repository: bitskyai/web-app
           tag_with_ref: true
-          path: ./bitsky
+          path: ./bitsky-web-app
   
   release_desktop_app:
     # only trigger when it is `release/bitspider` branch
@@ -106,7 +106,7 @@ jobs:
           asset_content_type: application/zip
 
   createPR:
-    needs: [release_headless_producer, release_service_producer, release_bitsky, release_desktop_app]
+    needs: [release_headless_producer, release_service_producer, release_web_app, release_desktop_app]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository

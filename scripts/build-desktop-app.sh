@@ -7,10 +7,10 @@ set -e
 # 1. BRANCH_UI: git branch for `bitsky-ui`
 # 2. BRANCH_ENGINE: git branch for `bitsky-supplier`
 # 3. BRANCH_ELECTRON: git branch for `bitsky-desktop-app`
-# 4. BRANCH_SOI: git branch for `bitsky-hello-retailer`. Default is `develop`
+# 4. BRANCH_RETAILER: git branch for `bitsky-hello-retailer`. Default is `develop`
 # 5. ENGINE_UI_FOLDER_NAME: folder name for `bitsky-supplier` with `bitsky-ui`. Defualt is `engine-ui`
 # 6. DIST: which folder to store build files. Default is `dist-engine-ui`
-# 7. SOI_FOLDER_NAME: Folder name for `bitsky-hello-retailer`. Default is `retailerservice`
+# 7. RETAILER_FOLDER_NAME: Folder name for `bitsky-hello-retailer`. Default is `retailerservice`
 # 8. NOT_START_SERVER: After build successful don't start server
 
 ROOT_DIR=$(pwd)
@@ -41,18 +41,18 @@ echo "Build BitSky Web App successfully"
 echo "Start build BitSky Hello Retailer ......"
 cd $ROOT_DIR
 
-if [ -z "${SOI_FOLDER_NAME}" ]; then
-  SOI_FOLDER_NAME="hello-retailer"
+if [ -z "${RETAILER_FOLDER_NAME}" ]; then
+  RETAILER_FOLDER_NAME="hello-retailer"
 fi
 
-TARGET_PATH="${DIST}/${SOI_FOLDER_NAME}"
+TARGET_PATH="${DIST}/${RETAILER_FOLDER_NAME}"
 echo ${TARGET_PATH}
 rm -rf ${TARGET_PATH}
 mkdir -p ${TARGET_PATH}
 cd ./bitsky-hello-retailer
 echo "Current Folder: " && pwd
-if [ "${BRANCH_SOI}" ]; then
-  git checkout ${BRANCH_SOI}
+if [ "${BRANCH_RETAILER}" ]; then
+  git checkout ${BRANCH_RETAILER}
   git pull
 fi
 # cp -rf src/ ../${TARGET_PATH}/src/
@@ -86,7 +86,7 @@ cp -rf workers/ ../${TARGET_PATH}/workers/
 cp index.js ../${TARGET_PATH}/
 cp server.js ../${TARGET_PATH}/
 cp package.json ../${TARGET_PATH}/
-cp agentConfigs.js ../${TARGET_PATH}/
+cp producerConfigs.js ../${TARGET_PATH}/
 cp utils.js ../${TARGET_PATH}/
 echo "Build BitSky Headless Producer successfully"
 

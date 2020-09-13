@@ -1,24 +1,24 @@
-[submodule "dia-ui"]
-	path = dia-ui
-	url = https://github.com/munew/dia-ui.git
-[submodule "dia-engine"]
-	path = dia-engine
-	url = https://github.com/munew/dia-engine.git
-[submodule "dia-electron"]
-	path = dia-electron
-	url = https://github.com/munew/dia-electron.git
-[submodule "dia-soi-boilerplate-node"]
-	path = dia-soi-boilerplate-node
-	url = https://github.com/munew/dia-soi-boilerplate-node.git
-[submodule "munew-engine-ui"]
-	path = munew-engine-ui
-	url = https://github.com/munew/munew-engine-ui.git
-[submodule "munew.github.io"]
-	path = munew.github.io
-	url = https://github.com/munew/munew.github.io.git
-[submodule "dia-agents-service"]
-	path = dia-agents-service
-	url = https://github.com/munew/dia-agents-service.git
-[submodule "dia-agents-headless"]
-	path = dia-agents-headless
-	url = https://github.com/munew/dia-agents-headless.git
+[submodule "bitsky-headless-producer"]
+	path = bitsky-headless-producer
+	url = https://github.com/bitskyai/bitsky-headless-producer.git
+[submodule "bitsky-service-producer"]
+	path = bitsky-service-producer
+	url = https://github.com/bitskyai/bitsky-service-producer.git
+[submodule "bitsky-supplier"]
+	path = bitsky-supplier
+	url = https://github.com/bitskyai/bitsky-supplier.git
+[submodule "bitsky-hello-retailer"]
+	path = bitsky-hello-retailer
+	url = https://github.com/bitskyai/bitsky-hello-retailer.git
+[submodule "bitsky-ui"]
+	path = bitsky-ui
+	url = https://github.com/bitskyai/bitsky-ui.git
+[submodule "bitskyai.github.io"]
+	path = bitskyai.github.io
+	url = https://github.com/bitskyai/bitskyai.github.io.git
+[submodule "bitsky-desktop-app"]
+	path = bitsky-desktop-app
+	url = https://github.com/bitskyai/bitsky-desktop-app.git
+[submodule "bitsky-web-app"]
+	path = bitsky-web-app
+	url = https://github.com/bitskyai/bitsky-web-app.git

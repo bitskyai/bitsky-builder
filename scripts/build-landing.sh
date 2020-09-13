@@ -1,7 +1,7 @@
 #!/bin/sh
-
+set -e
 ###########################
-# Build dia engine with ui
+# Build BitSky website
 ###########################
 # Available Envs:
 # 1. BRANCH_UI: git branch for `dia-ui`. Default is `develop`
@@ -11,22 +11,23 @@
 # 5. ENGINE_UI_FOLDER_NAME: folder name for `dia-engine` with `dia-ui`. Defualt is `engine-ui`
 # 6. NOT_INSTALL_NODE_MODULES: Don't install node_modules in target folder
 # 7. TARGET: ['electron', 'admin', 'ui']
-pwd
 
-if [ -z "${DIST}" ]; then
-  DIST="munew.github.io/"
+ROOT_DIR=$(pwd)
+echo "Root Folder: $ROOT_DIR"
+
+if [ -z "${TARGET_PATH}" ]; then
+  TARGET_PATH="bitskyai.github.io/"
 fi
 
-TARGET_PATH=${DIST}
 echo ${TARGET_PATH}
 
 cd ./${TARGET_PATH}
 find . ! -name 'CNAME' ! -name 'README.md' ! -name '.git' ! -name '.gitignore' ! -name '.'  ! -name '..' -print0 | xargs -0 rm -rf
-cd ..
 
 ###########################
-echo "Start build dia-ui..."
-cd ./dia-ui
+echo "Start build BitSky Official Website..."
+cd $ROOT_DIR
+cd ./bitsky-ui
 echo "Current Folder: " && pwd
 if [ "${BRANCH_UI}" ]; then
   git checkout ${BRANCH_UI}
@@ -35,4 +36,4 @@ fi
 yarn install
 npm run build-landing
 cp -rf dist/ ../${TARGET_PATH}
-echo "Build dia-ui successfully"
+echo "Build BitSky Official Website successfully"

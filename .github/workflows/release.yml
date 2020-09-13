@@ -8,62 +8,62 @@ env:
   GITHUB_TOKEN: ${{ github.token }}
 
 jobs:
-  release_headless_agent:
-    name: Push Headless Agent Docker image to Docker Hub
+  release_headless_producer:
+    name: Push Headless Producer Docker image to Docker Hub
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repo
         uses: actions/checkout@v2.1.0
         with:
           submodules: true
-      - name: Navigate to dia-agents-headless folder and List files
-        run: cd ./dia-agents-headless && ls
+      - name: Navigate to bitsky-headless-producer folder and List files
+        run: cd ./bitsky-headless-producer && ls
       - name: Push to Docker Hub
         uses: docker/build-push-action@v1
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-          repository: munew/headless-agent
+          repository: bitskyai/headless-producer
           tag_with_ref: true
-          path: ./dia-agents-headless
+          path: ./bitsky-headless-producer
 
-  release_service_agent:
-    name: Push Service Agent Docker image to Docker Hub
+  release_service_producer:
+    name: Push Service Producer Docker image to Docker Hub
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repo
         uses: actions/checkout@v2.1.0
         with:
           submodules: true
-      - name: Navigate to dia-agents-service folder and List files
-        run: cd ./dia-agents-service && ls
+      - name: Navigate to bitsky-service-producer folder and List files
+        run: cd ./bitsky-service-producer && ls
       - name: Push to Docker Hub
         uses: docker/build-push-action@v1
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-          repository: munew/service-agent
+          repository: bitskyai/service-producer
           tag_with_ref: true
-          path: ./dia-agents-service
+          path: ./bitsky-service-producer
 
-  release_munew_ui:
-    name: Push Munew UI Docker image to Docker Hub
+  release_web_app:
+    name: Push BitSky Docker image to Docker Hub
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repo
         uses: actions/checkout@v2.1.0
         with:
           submodules: true
-      - name: Navigate to munew-engine-ui folder and List files
-        run: cd ./munew-engine-ui && ls
+      - name: Navigate to bitsky-web-app folder and List files
+        run: cd ./bitsky-web-app && ls
       - name: Push to Docker Hub
         uses: docker/build-push-action@v1
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-          repository: munew/engine-ui
+          repository: bitskyai/web-app
           tag_with_ref: true
-          path: ./munew-engine-ui
+          path: ./bitsky-web-app
   
   release_desktop_app:
     # only trigger when it is `release/bitspider` branch
@@ -88,9 +88,9 @@ jobs:
       - name: Install node_modules
         run: ls && yarn install
       - name: Build
-        run: npm run build-electron
+        run: npm run build-desktop-app
       - name: List generate files
-        run: cd ./dia-electron/out && ls
+        run: cd ./bitsky-desktop-app/out && ls
       - name: Get Release
         id: get_release
         uses: bruceadams/get-release@v1.2.0
@@ -101,12 +101,12 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.get_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-          asset_path: ./dia-electron/out/munew.zip
-          asset_name: 'munew-${{ matrix.os }}.zip'
+          asset_path: ./bitsky-desktop-app/out/bitsky.zip
+          asset_name: 'bitsky-${{ matrix.os }}.zip'
           asset_content_type: application/zip
 
   createPR:
-    needs: [release_headless_agent, release_service_agent, release_munew_ui, release_desktop_app]
+    needs: [release_headless_producer, release_service_producer, release_web_app, release_desktop_app]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository

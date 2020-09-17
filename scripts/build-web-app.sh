@@ -4,11 +4,11 @@ set -e
 # Build BitSky Web Application
 ###########################
 # Available Envs:
-# 1. BRANCH_UI: git branch for `dia-ui`. Default is `develop`
-# 2. BRANCH_ENGINE: git branch for `dia-engine`. Default is `develop`
-# 3. TARGET_PATH: which folder to store build files. Default is `dist-engine-ui`
+# 1. BRANCH_UI: git branch for `bitsky-ui`. Default is `develop`
+# 2. BRANCH_SUPPLIER: git branch for `bitsky-supplier`. Default is `develop`
+# 3. TARGET_PATH: which folder to store build files. Default is `dist-supplier-ui`
 # 4. NOT_START_SERVER: After build successful don't start server
-# 5. ENGINE_UI_FOLDER_NAME: folder name for `dia-engine` with `dia-ui`. Defualt is `engine-ui`
+# 5. SUPPLIER_UI_FOLDER_NAME: folder name for `bitsky-supplier` with `bitsky-ui`. Defualt is `supplier-ui`
 # 6. NOT_INSTALL_NODE_MODULES: Don't install node_modules in target folder
 # 7. TARGET: ['electron', 'admin', 'ui']
 
@@ -40,11 +40,11 @@ echo "Start build BitSky Supplier Service ......"
 cd $ROOT_DIR
 cd bitsky-supplier
 echo "Current Folder: " && pwd
-if [ "${BRANCH_ENGINE}" ]; then
-  git checkout ${BRANCH_ENGINE}
+if [ "${BRANCH_SUPPLIER}" ]; then
+  git checkout ${BRANCH_SUPPLIER}
   git pull
 fi
-yarn install
+npm install
 npm run tsc
 cp -rf build/ ../${TARGET_PATH}/build
 cp package.json ../${TARGET_PATH}
@@ -65,7 +65,7 @@ if [ "${BRANCH_UI}" ]; then
   git checkout ${BRANCH_UI}
   git pull
 fi
-yarn install
+npm install
 npm run build-"${TARGET}"
 cp -rf dist/ ../${TARGET_PATH}/build/public/
 echo "Build BitSky UI successfully"
@@ -75,12 +75,12 @@ if [ -z "${NOT_INSTALL_NODE_MODULES}" ]; then
   echo "Install production node_modules..."
   cd $ROOT_DIR
   cd ${TARGET_PATH}
-  yarn install --production
+  npm install --production
 fi
 
 ###########################
 # Default start server
-if [ -z "${NOT_START_SERVER}" ]; then
+if [ -z "${NOT_START_SERVER}" ] && [ -z "${NOT_INSTALL_NODE_MODULES}" ]; then
   echo "Start Server"
   cd $ROOT_DIR
   cd ${TARGET_PATH}

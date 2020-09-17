@@ -86,7 +86,7 @@ jobs:
           node-version: "12.x"
           registry-url: https://registry.npmjs.org/
       - name: Install node_modules
-        run: ls && yarn install
+        run: ls && npm install
       - name: Build
         run: npm run build-desktop-app
       - name: List generate files

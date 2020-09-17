@@ -4,11 +4,11 @@ set -e
 # Build BitSky website
 ###########################
 # Available Envs:
-# 1. BRANCH_UI: git branch for `dia-ui`. Default is `develop`
-# 2. BRANCH_ENGINE: git branch for `dia-engine`. Default is `develop`
-# 3. DIST: which folder to store build files. Default is `dist-engine-ui`
+# 1. BRANCH_UI: git branch for `bitsky-ui`. Default is `develop`
+# 2. BRANCH_SUPPLIER: git branch for `bitsky-supplier`. Default is `develop`
+# 3. DIST: which folder to store build files. Default is `dist-supplier-ui`
 # 4. NOT_START_SERVER: After build successful don't start server
-# 5. ENGINE_UI_FOLDER_NAME: folder name for `dia-engine` with `dia-ui`. Defualt is `engine-ui`
+# 5. SUPPLIER_UI_FOLDER_NAME: folder name for `bitsky-supplier` with `bitsky-ui`. Defualt is `supplier-ui`
 # 6. NOT_INSTALL_NODE_MODULES: Don't install node_modules in target folder
 # 7. TARGET: ['electron', 'admin', 'ui']
 
@@ -33,7 +33,7 @@ if [ "${BRANCH_UI}" ]; then
   git checkout ${BRANCH_UI}
   git pull
 fi
-yarn install
+npm install
 npm run build-landing
 cp -rf dist/ ../${TARGET_PATH}
 echo "Build BitSky Official Website successfully"

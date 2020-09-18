@@ -5,11 +5,11 @@ set -e
 ####################################################################################
 # Available Envs:
 # 1. BRANCH_UI: git branch for `bitsky-ui`
-# 2. BRANCH_ENGINE: git branch for `bitsky-supplier`
+# 2. BRANCH_SUPPLIER: git branch for `bitsky-supplier`
 # 3. BRANCH_ELECTRON: git branch for `bitsky-desktop-app`
 # 4. BRANCH_RETAILER: git branch for `bitsky-hello-retailer`. Default is `develop`
-# 5. ENGINE_UI_FOLDER_NAME: folder name for `bitsky-supplier` with `bitsky-ui`. Defualt is `engine-ui`
-# 6. DIST: which folder to store build files. Default is `dist-engine-ui`
+# 5. SUPPLIER_UI_FOLDER_NAME: folder name for `bitsky-supplier` with `bitsky-ui`. Defualt is `supplier-ui`
+# 6. DIST: which folder to store build files. Default is `dist-supplier-ui`
 # 7. RETAILER_FOLDER_NAME: Folder name for `bitsky-hello-retailer`. Default is `retailerservice`
 # 8. NOT_START_SERVER: After build successful don't start server
 

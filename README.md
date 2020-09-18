@@ -37,4 +37,29 @@ npm run build-desktop-app
 ```
 Build latest desktop application inside `bitsky-desktop-app/out`
 
-### Develop UI
+### Copy BitSky Web Application to Desktop Application
+During develop time, after you change `bitsky-ui` or `bitsky-supplier`, if you want to test it inside Desktop Application, you need to run this command to copy latest changes to `bitsky-desktop-app`. After executed successfully, then you need can run `npm start` inside `bitsky-desktop-app` to see latest changes.
+
+```bash
+npm run copy-web-app-to-desktop-app
+```
+
+### Build docker images
+#### Build `bitskyai/headless-producer` and `bitskyai/service-producer` docker image:
+```bash
+npm run build-docker-service-producer
+```
+
+```bash
+npm run build-docker-headless-producer
+```
+
+#### Build `bitskyai/web-app` docker image:
+```bash
+npm run build-docker-web-app
+```
+
+If you want to get latest UI, run first:
+```
+npm run build-web-app
+```

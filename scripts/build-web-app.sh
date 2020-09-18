@@ -51,7 +51,7 @@ cp package.json ../${TARGET_PATH}
 cp app.json ../${TARGET_PATH}
 cp openapi.yml ../${TARGET_PATH}
 # cp Procfile ../${TARGET_PATH}
-# cp package-lock.json ../${TARGET_PATH}
+cp package-lock.json ../${TARGET_PATH}
 cp .dockerignore ../${TARGET_PATH}
 cp Dockerfile ../${TARGET_PATH}
 echo "Build BitSky Supplier Service successfully"

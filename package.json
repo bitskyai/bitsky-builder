@@ -8,7 +8,6 @@
     "build-docker-web-app": "./scripts/build-docker-web-app.sh",
     "build-docker-service-producer": "./scripts/build-docker-service-producer.sh",
     "build-docker-headless-producer": "./scripts/build-docker-headless-producer.sh",
-    "build-full-features-web-app": "cross-env TARGET=ui bash ./scripts/build-full-features-web-app.sh",
     "build-landing": "cross-env TARGET=landing bash ./scripts/build-landing.sh",
     "build-web-app": "cross-env TARGET=admin bash ./scripts/build-web-app.sh",
     "build-desktop-app": "cross-env TARGET=electron bash ./scripts/build-desktop-app.sh",

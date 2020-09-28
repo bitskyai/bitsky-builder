@@ -91,7 +91,7 @@ cp utils.js ../${TARGET_PATH}/
 echo "Build BitSky Headless Producer successfully"
 
 ###########################
-echo "Start copy BitSky Service Producer ......"
+echo "Start copy BitSky HTTP Producer ......"
 cd $ROOT_DIR
 
 if [ -z "${SERVICE_FOLDER_NAME}" ]; then
@@ -112,7 +112,7 @@ cp index.js ../${TARGET_PATH}/
 cp server.js ../${TARGET_PATH}/
 cp utils.js ../${TARGET_PATH}/
 cp package.json ../${TARGET_PATH}/
-echo "Build BitSky Service Producer successfully"
+echo "Build BitSky HTTP Producer successfully"
 
 ###########################
 echo "Start build electron app"

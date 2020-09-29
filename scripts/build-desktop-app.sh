@@ -95,16 +95,16 @@ echo "Start copy BitSky HTTP Producer ......"
 cd $ROOT_DIR
 
 if [ -z "${SERVICE_FOLDER_NAME}" ]; then
-  SERVICE_FOLDER_NAME="service-producer"
+  SERVICE_FOLDER_NAME="http-producer"
 fi
 TARGET_PATH="${DIST}/${SERVICE_FOLDER_NAME}"
 echo ${TARGET_PATH}
 rm -rf ${TARGET_PATH}
 mkdir -p ${TARGET_PATH}
-cd ./bitsky-service-producer
+cd ./bitsky-http-producer
 echo "Current Folder: " && pwd
-if [ "${BRANCH_SERVICE}" ]; then
-  git checkout ${BRANCH_SERVICE}
+if [ "${BRANCH_HTTP}" ]; then
+  git checkout ${BRANCH_HTTP}
   git pull
 fi
 

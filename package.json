@@ -6,7 +6,7 @@
   "scripts": {
     "test": "npm run test",
     "build-docker-web-app": "./scripts/build-docker-web-app.sh",
-    "build-docker-service-producer": "./scripts/build-docker-service-producer.sh",
+    "build-docker-http-producer": "./scripts/build-docker-http-producer.sh",
     "build-docker-headless-producer": "./scripts/build-docker-headless-producer.sh",
     "build-landing": "cross-env TARGET=landing bash ./scripts/build-landing.sh",
     "build-web-app": "cross-env TARGET=admin bash ./scripts/build-web-app.sh",

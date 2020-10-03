@@ -124,7 +124,7 @@ if [ "${BRANCH_ELECTRON}" ]; then
   git checkout ${BRANCH_ELECTRON}
   git pull
 fi
-yarn install
+npm install
 
 if [ -z "${NOT_MAKE_APP}" ]; then
   npm run make

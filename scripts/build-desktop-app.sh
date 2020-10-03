@@ -91,20 +91,20 @@ cp utils.js ../${TARGET_PATH}/
 echo "Build BitSky Headless Producer successfully"
 
 ###########################
-echo "Start copy BitSky Service Producer ......"
+echo "Start copy BitSky HTTP Producer ......"
 cd $ROOT_DIR
 
 if [ -z "${SERVICE_FOLDER_NAME}" ]; then
-  SERVICE_FOLDER_NAME="service-producer"
+  SERVICE_FOLDER_NAME="http-producer"
 fi
 TARGET_PATH="${DIST}/${SERVICE_FOLDER_NAME}"
 echo ${TARGET_PATH}
 rm -rf ${TARGET_PATH}
 mkdir -p ${TARGET_PATH}
-cd ./bitsky-service-producer
+cd ./bitsky-http-producer
 echo "Current Folder: " && pwd
-if [ "${BRANCH_SERVICE}" ]; then
-  git checkout ${BRANCH_SERVICE}
+if [ "${BRANCH_HTTP}" ]; then
+  git checkout ${BRANCH_HTTP}
   git pull
 fi
 
@@ -112,7 +112,7 @@ cp index.js ../${TARGET_PATH}/
 cp server.js ../${TARGET_PATH}/
 cp utils.js ../${TARGET_PATH}/
 cp package.json ../${TARGET_PATH}/
-echo "Build BitSky Service Producer successfully"
+echo "Build BitSky HTTP Producer successfully"
 
 ###########################
 echo "Start build electron app"
@@ -124,7 +124,7 @@ if [ "${BRANCH_ELECTRON}" ]; then
   git checkout ${BRANCH_ELECTRON}
   git pull
 fi
-yarn install
+npm install
 
 if [ -z "${NOT_MAKE_APP}" ]; then
   npm run make

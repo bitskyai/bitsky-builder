@@ -1,9 +1,6 @@
 [submodule "bitsky-headless-producer"]
 	path = bitsky-headless-producer
 	url = https://github.com/bitskyai/bitsky-headless-producer.git
-[submodule "bitsky-service-producer"]
-	path = bitsky-service-producer
-	url = https://github.com/bitskyai/bitsky-service-producer.git
 [submodule "bitsky-supplier"]
 	path = bitsky-supplier
 	url = https://github.com/bitskyai/bitsky-supplier.git
@@ -22,3 +19,6 @@
 [submodule "bitsky-web-app"]
 	path = bitsky-web-app
 	url = https://github.com/bitskyai/bitsky-web-app.git
+[submodule "bitsky-http-producer"]
+	path = bitsky-http-producer
+	url = https://github.com/bitskyai/bitsky-http-producer.git

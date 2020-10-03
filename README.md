@@ -45,9 +45,9 @@ npm run copy-web-app-to-desktop-app
 ```
 
 ### Build docker images
-#### Build `bitskyai/headless-producer` and `bitskyai/service-producer` docker image:
+#### Build `bitskyai/headless-producer` and `bitskyai/http-producer` docker image:
 ```bash
-npm run build-docker-service-producer
+npm run build-docker-http-producer
 ```
 
 ```bash

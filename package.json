@@ -1,11 +1,11 @@
 {
   "name": "@bitskyai/builder",
-  "version": "0.1.1",
+  "version": "0.3.0",
   "description": "Build BitSky Application, docker images",
   "main": "index.js",
   "scripts": {
     "test": "npm run test",
-    "prepare-release": "DEBUG=* node ./scripts/update_version.js",
+    "prepare-release": "DEBUG=* node ./scripts/prepare-release.js",
     "build-docker-web-app": "./scripts/build-docker-web-app.sh",
     "build-docker-http-producer": "./scripts/build-docker-http-producer.sh",
     "build-docker-headless-producer": "./scripts/build-docker-headless-producer.sh",

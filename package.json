@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "npm run test",
+    "prepare-release": "DEBUG=* node ./scripts/update_version.js",
     "build-docker-web-app": "./scripts/build-docker-web-app.sh",
     "build-docker-http-producer": "./scripts/build-docker-http-producer.sh",
     "build-docker-headless-producer": "./scripts/build-docker-headless-producer.sh",
@@ -28,7 +29,8 @@
   },
   "homepage": "https://github.com/bitskyai/bitsky#readme",
   "devDependencies": {
-    "cross-env": "^7.0.2",
-    "rimraf": "^3.0.2"
+    "cross-env": "7.0.2",
+    "fs-extra": "9.0.1",
+    "debug": "4.2.0"
   }
 }

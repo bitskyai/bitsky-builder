@@ -63,3 +63,10 @@ If you want to get latest UI, run first:
 ```
 npm run build-web-app
 ```
+
+### Prepare Release
+To update all the `package.json` and `package-lock.json` to same version, and build `bitsky-web-app`, and automatically commit changes.
+```
+npm run prepare-release 0.3.0
+```
+`0.3.0` is the version you want to release

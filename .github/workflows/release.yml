@@ -16,16 +16,46 @@ jobs:
         uses: actions/checkout@v2.1.0
         with:
           submodules: true
+      -
+        name: Prepare
+        id: prep
+        run: |
+          DOCKER_IMAGE=bitskyai/headless-producer
+          VERSION=latest
+          if [[ $GITHUB_REF == refs/tags/* ]]; then
+            VERSION=${GITHUB_REF#refs/tags/}
+          elif [[ $GITHUB_REF == refs/heads/* ]]; then
+            VERSION=$(echo ${GITHUB_REF#refs/heads/} | sed -r 's#/+#-#g')
+          elif [[ $GITHUB_REF == refs/pull/* ]]; then
+            VERSION=pr-${{ github.event.number }}
+          fi
+          TAGS="${DOCKER_IMAGE}:${VERSION}"
+          if [ "${{ github.event_name }}" = "push" ]; then
+            TAGS="$TAGS,${DOCKER_IMAGE}:sha-${GITHUB_SHA::8}"
+          fi
+          echo ::set-output name=version::${VERSION}
+          echo ::set-output name=tags::${TAGS}
+          echo ::set-output name=created::$(date -u +'%Y-%m-%dT%H:%M:%SZ')
       - name: Navigate to bitsky-headless-producer folder and List files
         run: cd ./bitsky-headless-producer && ls
-      - name: Push to Docker Hub
-        uses: docker/build-push-action@v1
+      -
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+      -
+        name: Login to DockerHub
+        uses: docker/login-action@v1
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-          repository: bitskyai/headless-producer
-          tag_with_ref: true
-          path: ./bitsky-headless-producer
+      -
+        name: Build and push
+        uses: docker/build-push-action@v2
+        with:
+          context: ./bitsky-headless-producer
+          file: ./Dockerfile
+          tags: |
+            bitskyai/headless-producer:latest
+            ${{ steps.prep.outputs.tags }}
 
   release_http_producer:
     name: Push HTTP Producer Docker image to Docker Hub
@@ -35,16 +65,95 @@ jobs:
         uses: actions/checkout@v2.1.0
         with:
           submodules: true
+      -
+        name: Prepare
+        id: prep
+        run: |
+          DOCKER_IMAGE=bitskyai/http-producer
+          VERSION=latest
+          if [[ $GITHUB_REF == refs/tags/* ]]; then
+            VERSION=${GITHUB_REF#refs/tags/}
+          elif [[ $GITHUB_REF == refs/heads/* ]]; then
+            VERSION=$(echo ${GITHUB_REF#refs/heads/} | sed -r 's#/+#-#g')
+          elif [[ $GITHUB_REF == refs/pull/* ]]; then
+            VERSION=pr-${{ github.event.number }}
+          fi
+          TAGS="${DOCKER_IMAGE}:${VERSION}"
+          if [ "${{ github.event_name }}" = "push" ]; then
+            TAGS="$TAGS,${DOCKER_IMAGE}:sha-${GITHUB_SHA::8}"
+          fi
+          echo ::set-output name=version::${VERSION}
+          echo ::set-output name=tags::${TAGS}
+          echo ::set-output name=created::$(date -u +'%Y-%m-%dT%H:%M:%SZ')
       - name: Navigate to bitsky-http-producer folder and List files
         run: cd ./bitsky-http-producer && ls
-      - name: Push to Docker Hub
-        uses: docker/build-push-action@v1
+      -
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+      -
+        name: Login to DockerHub
+        uses: docker/login-action@v1
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-          repository: bitskyai/http-producer
-          tag_with_ref: true
-          path: ./bitsky-http-producer
+      -
+        name: Build and push
+        uses: docker/build-push-action@v2
+        with:
+          context: ./bitsky-http-producer
+          file: ./Dockerfile
+          tags: |
+            bitskyai/http-producer:latest
+            ${{ steps.prep.outputs.tags }}
+
+  release_hello_retailer:
+    name: Push HTTP Producer Docker image to Docker Hub
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v2.1.0
+        with:
+          submodules: true
+      -
+        name: Prepare
+        id: prep
+        run: |
+          DOCKER_IMAGE=bitskyai/hello-retailer
+          VERSION=latest
+          if [[ $GITHUB_REF == refs/tags/* ]]; then
+            VERSION=${GITHUB_REF#refs/tags/}
+          elif [[ $GITHUB_REF == refs/heads/* ]]; then
+            VERSION=$(echo ${GITHUB_REF#refs/heads/} | sed -r 's#/+#-#g')
+          elif [[ $GITHUB_REF == refs/pull/* ]]; then
+            VERSION=pr-${{ github.event.number }}
+          fi
+          TAGS="${DOCKER_IMAGE}:${VERSION}"
+          if [ "${{ github.event_name }}" = "push" ]; then
+            TAGS="$TAGS,${DOCKER_IMAGE}:sha-${GITHUB_SHA::8}"
+          fi
+          echo ::set-output name=version::${VERSION}
+          echo ::set-output name=tags::${TAGS}
+          echo ::set-output name=created::$(date -u +'%Y-%m-%dT%H:%M:%SZ')
+      - name: Navigate to bitsky-hello-retailer folder and List files
+        run: cd ./bitsky-hello-retailer && ls
+      -
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+      -
+        name: Login to DockerHub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+      -
+        name: Build and push
+        uses: docker/build-push-action@v2
+        with:
+          context: ./bitsky-hello-retailer
+          file: ./Dockerfile
+          tags: |
+            bitskyai/hello-retailer:latest
+            ${{ steps.prep.outputs.tags }}          
 
   release_web_app:
     name: Push BitSky Docker image to Docker Hub
@@ -54,16 +163,46 @@ jobs:
         uses: actions/checkout@v2.1.0
         with:
           submodules: true
+      -
+        name: Prepare
+        id: prep
+        run: |
+          DOCKER_IMAGE=bitskyai/web-app
+          VERSION=latest
+          if [[ $GITHUB_REF == refs/tags/* ]]; then
+            VERSION=${GITHUB_REF#refs/tags/}
+          elif [[ $GITHUB_REF == refs/heads/* ]]; then
+            VERSION=$(echo ${GITHUB_REF#refs/heads/} | sed -r 's#/+#-#g')
+          elif [[ $GITHUB_REF == refs/pull/* ]]; then
+            VERSION=pr-${{ github.event.number }}
+          fi
+          TAGS="${DOCKER_IMAGE}:${VERSION}"
+          if [ "${{ github.event_name }}" = "push" ]; then
+            TAGS="$TAGS,${DOCKER_IMAGE}:sha-${GITHUB_SHA::8}"
+          fi
+          echo ::set-output name=version::${VERSION}
+          echo ::set-output name=tags::${TAGS}
+          echo ::set-output name=created::$(date -u +'%Y-%m-%dT%H:%M:%SZ')
       - name: Navigate to bitsky-web-app folder and List files
         run: cd ./bitsky-web-app && ls
-      - name: Push to Docker Hub
-        uses: docker/build-push-action@v1
+      -
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+      -
+        name: Login to DockerHub
+        uses: docker/login-action@v1
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-          repository: bitskyai/web-app
-          tag_with_ref: true
-          path: ./bitsky-web-app
+      -
+        name: Build and push
+        uses: docker/build-push-action@v2
+        with:
+          context: ./bitsky-web-app
+          file: ./Dockerfile
+          tags: |
+            bitskyai/web-app:latest
+            ${{ steps.prep.outputs.tags }}
   
   release_desktop_app:
     # only trigger when it is `release/bitspider` branch
@@ -106,7 +245,7 @@ jobs:
           asset_content_type: application/zip
 
   createPR:
-    needs: [release_headless_producer, release_http_producer, release_web_app, release_desktop_app]
+    needs: [release_headless_producer, release_http_producer, release_hello_retailer, release_web_app, release_desktop_app]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository

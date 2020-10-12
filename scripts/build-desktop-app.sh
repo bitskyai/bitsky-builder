@@ -56,12 +56,19 @@ if [ "${BRANCH_RETAILER}" ]; then
   git pull
 fi
 # cp -rf src/ ../${TARGET_PATH}/src/
+cp -rf utils ../${TARGET_PATH}/
+cp .dockerignore ../${TARGET_PATH}/
+cp .gitignore ../${TARGET_PATH}/
+cp app.json ../${TARGET_PATH}/
+cp Dockerfile ../${TARGET_PATH}/
 cp index.js ../${TARGET_PATH}/
+cp LICENSE ../${TARGET_PATH}/
+cp package-lock.json ../${TARGET_PATH}/
+cp package.json ../${TARGET_PATH}/
+cp Procfile ../${TARGET_PATH}/
+cp README.md ../${TARGET_PATH}/
 cp server.js ../${TARGET_PATH}/
 cp worker.js ../${TARGET_PATH}/
-cp -rf utils ../${TARGET_PATH}/
-cp README.md ../${TARGET_PATH}/
-cp package.json ../${TARGET_PATH}/
 cp -rf public ../${TARGET_PATH}/
 echo "Build BitSky Hello Retailer successfully"
 

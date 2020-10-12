@@ -52,7 +52,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: ./bitsky-headless-producer
-          file: ./Dockerfile
+          file: ./bitsky-headless-producer/Dockerfile
           tags: |
             bitskyai/headless-producer:latest
             ${{ steps.prep.outputs.tags }}
@@ -101,13 +101,13 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: ./bitsky-http-producer
-          file: ./Dockerfile
+          file: ./bitsky-http-producer/Dockerfile
           tags: |
             bitskyai/http-producer:latest
             ${{ steps.prep.outputs.tags }}
 
   release_hello_retailer:
-    name: Push HTTP Producer Docker image to Docker Hub
+    name: Push Hello Retailer Docker image to Docker Hub
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repo
@@ -150,7 +150,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: ./bitsky-hello-retailer
-          file: ./Dockerfile
+          file: ./bitsky-hello-retailer/Dockerfile
           tags: |
             bitskyai/hello-retailer:latest
             ${{ steps.prep.outputs.tags }}          

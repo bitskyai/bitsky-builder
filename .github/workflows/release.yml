@@ -53,6 +53,8 @@ jobs:
         with:
           context: ./bitsky-headless-producer
           file: ./bitsky-headless-producer/Dockerfile
+          pull: true
+          push: true
           tags: |
             bitskyai/headless-producer:latest
             ${{ steps.prep.outputs.tags }}
@@ -102,6 +104,8 @@ jobs:
         with:
           context: ./bitsky-http-producer
           file: ./bitsky-http-producer/Dockerfile
+          pull: true
+          push: true
           tags: |
             bitskyai/http-producer:latest
             ${{ steps.prep.outputs.tags }}
@@ -151,6 +155,8 @@ jobs:
         with:
           context: ./bitsky-hello-retailer
           file: ./bitsky-hello-retailer/Dockerfile
+          pull: true
+          push: true
           tags: |
             bitskyai/hello-retailer:latest
             ${{ steps.prep.outputs.tags }}          
@@ -199,7 +205,9 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: ./bitsky-web-app
-          file: ./Dockerfile
+          file: ./bitsky-web-app/Dockerfile
+          pull: true
+          push: true
           tags: |
             bitskyai/web-app:latest
             ${{ steps.prep.outputs.tags }}

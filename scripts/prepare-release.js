@@ -54,20 +54,21 @@ rootLog("Start update version listed in dirs");
 dirs.forEach((dir) => {
   updateVersion(dir, version);
 });
-const log = debug("bitsky-web-app");
-log("Start build web app ...");
-execSync(`export NOT_START_SERVER=true && npm run build-web-app`, {
-  cwd: path.join(scriptsFolder, "../"),
-  stdio: "ignore",
-  // cwd: scriptsFolder,
-});
-execSync(`git add . && git commit -am "bump up version to ${version}"`, {
-  cwd: path.join(scriptsFolder, "../bitsky-web-app"),
-});
-log(`Successfully git commit`);
-execSync(`git push`, {
-  cwd: path.join(scriptsFolder, "../bitsky-web-app"),
-});
-log(`Successfully git push`);
+// const log = debug("bitsky-web-app");
+// log("Start build web app ...");
+// execSync(`export NOT_START_SERVER=true && npm run build-web-app`, {
+//   cwd: path.join(scriptsFolder, "../"),
+//   stdio: "ignore",
+//   // cwd: scriptsFolder,
+// });
+// execSync(`git add . && git commit -am "bump up version to ${version}"`, {
+//   cwd: path.join(scriptsFolder, "../bitsky-web-app"),
+// });
+// log(`Successfully git commit`);
+// execSync(`git push`, {
+//   cwd: path.join(scriptsFolder, "../bitsky-web-app"),
+// });
+// log(`Successfully git push`);
 
+updateVersion(path.join(scriptsFolder, "../"), version);
 rootLog("Successfully prepare release");

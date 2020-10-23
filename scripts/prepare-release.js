@@ -70,4 +70,5 @@ execSync(`git push`, {
 });
 log(`Successfully git push`);
 
+updateVersion(path.join(scriptsFolder, "../"), version);
 rootLog("Successfully prepare release");

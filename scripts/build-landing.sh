@@ -22,7 +22,7 @@ fi
 echo ${TARGET_PATH}
 
 cd ./${TARGET_PATH}
-find . ! -name 'CNAME' ! -name 'README.md' ! -name '.git' ! -name '.gitignore' ! -name '.'  ! -name '..' -print0 | xargs -0 rm -rf
+find . ! -name 'CNAME' ! -name 'README.md' ! -name '.git' ! -name '.gitignore' ! -name 'sitemap.xml' ! -name 'robots.txt' ! -name '.'  ! -name '..' -print0 | xargs -0 rm -rf
 
 ###########################
 echo "Start build BitSky Official Website..."
